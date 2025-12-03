@@ -1,7 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+app = FastAPI(
+    title="Furniture Shopping Backend API",
+    description="Backend API providing services for the furniture shopping mobile app.",
+    version="0.1.0",
+    openapi_tags=[{"name": "Health", "description": "Service health and diagnostics"}],
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -11,6 +16,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
+# PUBLIC_INTERFACE
+@app.get(
+    "/",
+    tags=["Health"],
+    summary="Health Check",
+    description="Simple liveness probe for the API service.",
+)
 def health_check():
+    """Return a simple healthy message indicating the service is alive."""
     return {"message": "Healthy"}
