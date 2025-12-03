@@ -3,9 +3,11 @@
   "description": "Furniture Shopping App Backend API (FastAPI)",
   "port": 3001,
   "start": "bash start.sh",
+  "useShell": true,
   "preview": {
     "command": "uvicorn src.api.main:app --host 0.0.0.0 --port 3001",
-    "port": 3001
+    "port": 3001,
+    "useShell": true
   },
   "watch": ["src/api"],
   "env": {
