@@ -1,0 +1,18 @@
+# Preview configuration for BackendAPI to avoid any npm usage.
+# Ensures the preview runner launches FastAPI via uvicorn on port 3001.
+version: 1
+services:
+  BackendAPI:
+    # Ensure the working directory is the BackendAPI folder
+    workdir: BackendAPI
+    # Explicit start command using the provided script (preferred)
+    start: bash start.sh
+    # Alternatively, uncomment below to directly run uvicorn without the script:
+    # start: uvicorn src.api.main:app --host 0.0.0.0 --port 3001
+    port: 3001
+    health:
+      path: /
+      expectedStatus: 200
+    env:
+      - PYTHONUNBUFFERED=1
+    shell: true

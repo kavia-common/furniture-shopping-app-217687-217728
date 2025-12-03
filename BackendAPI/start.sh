@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Simple start script for local/preview environments
-# Ensures required packages are installed and then starts uvicorn on port 3001.
-# Note: There is no npm usage in this service.
+# Simple start script for local/preview environments.
+# This service is Python/FastAPI only — there is NO npm usage or fallback here.
 
 # Make sure the script remains executable even if exec bit is stripped in some environments
 chmod +x "$0" || true

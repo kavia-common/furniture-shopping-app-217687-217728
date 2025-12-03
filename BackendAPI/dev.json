@@ -12,5 +12,6 @@
   "watch": ["src/api"],
   "env": {
     "PYTHONUNBUFFERED": "1"
-  }
+  },
+  "note": "No npm usage; start via bash start.sh or uvicorn directly."
 }

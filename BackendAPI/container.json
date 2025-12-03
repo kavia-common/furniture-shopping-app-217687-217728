@@ -1,0 +1,14 @@
+{
+  "name": "BackendAPI",
+  "description": "Furniture Shopping App Backend API (FastAPI)",
+  "start": "bash start.sh",
+  "useShell": true,
+  "port": 3001,
+  "healthCheck": {
+    "path": "/",
+    "expectedStatus": 200
+  },
+  "env": {
+    "PYTHONUNBUFFERED": "1"
+  }
+}

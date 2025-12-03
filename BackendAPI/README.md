@@ -25,6 +25,7 @@ bash start.sh
 
 Preview override:
 - A top-level preview.override.json is included to force `bash start.sh` in environments that auto-detect Node/npm. Ensure your orchestrator supports this override.
+- preview.yaml and kavia.json at the repository root also explicitly configure the BackendAPI to launch with `bash start.sh` and bind to port 3001 with a health check at `/`.
 
 Note: There is no Node/npm usage in this backend. Do not run npm start here. If your environment attempts to run npm, it is misconfigured—ensure it runs `bash start.sh` or `uvicorn ...` directly.
 

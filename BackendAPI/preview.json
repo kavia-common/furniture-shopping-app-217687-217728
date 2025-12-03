@@ -6,5 +6,6 @@
   "healthCheck": {
     "path": "/",
     "expectedStatus": 200
-  }
+  },
+  "note": "FastAPI only; no npm usage."
 }

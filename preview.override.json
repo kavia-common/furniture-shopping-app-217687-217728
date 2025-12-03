@@ -7,5 +7,6 @@
     "path": "/",
     "expectedStatus": 200
   },
-  "workingDirectory": "BackendAPI"
+  "workingDirectory": "BackendAPI",
+  "note": "Force FastAPI start; do not attempt any npm command."
 }

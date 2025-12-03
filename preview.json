@@ -1,0 +1,18 @@
+{
+  "services": [
+    {
+      "name": "BackendAPI",
+      "workingDirectory": "BackendAPI",
+      "command": "bash start.sh",
+      "useShell": true,
+      "port": 3001,
+      "healthCheck": {
+        "path": "/",
+        "expectedStatus": 200
+      },
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      }
+    }
+  ]
+}
