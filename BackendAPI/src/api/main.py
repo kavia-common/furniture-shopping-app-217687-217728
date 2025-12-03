@@ -1,5 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import logging
+
+# Configure basic logging for readiness/diagnostics
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("backendapi")
 
 # PUBLIC_INTERFACE
 def create_app() -> FastAPI:
@@ -18,6 +23,11 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
+    # Log readiness once startup completes
+    @app.on_event("startup")
+    async def _on_startup():
+        logger.info("BackendAPI FastAPI app started and ready to accept connections on port 3001")
 
     # PUBLIC_INTERFACE
     @app.get(
