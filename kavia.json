@@ -5,6 +5,7 @@
       "name": "BackendAPI",
       "workingDirectory": "BackendAPI",
       "command": "bash start.sh",
+      "fallbackCommand": "bash run.sh",
       "useShell": true,
       "port": 3001,
       "healthCheck": {

@@ -1,5 +1,6 @@
 {
   "name": "BackendAPI",
+  "workingDirectory": ".",
   "port": 3001,
   "command": "bash start.sh",
   "useShell": true,
@@ -7,6 +8,5 @@
     "path": "/",
     "expectedStatus": 200
   },
-  "workingDirectory": "BackendAPI",
-  "note": "Force FastAPI start via bash start.sh; do not attempt any npm command. This service has no package.json."
+  "note": "Force FastAPI start via bash start.sh; do not attempt any npm command."
 }
