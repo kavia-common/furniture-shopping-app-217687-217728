@@ -23,6 +23,9 @@ web: uvicorn src.api.main:app --host 0.0.0.0 --port 3001
 bash start.sh
 ```
 
+Preview override:
+- A top-level preview.override.json is included to force `bash start.sh` in environments that auto-detect Node/npm. Ensure your orchestrator supports this override.
+
 Note: There is no Node/npm usage in this backend. Do not run npm start here. If your environment attempts to run npm, it is misconfigured—ensure it runs `bash start.sh` or `uvicorn ...` directly.
 
 ## Dependencies

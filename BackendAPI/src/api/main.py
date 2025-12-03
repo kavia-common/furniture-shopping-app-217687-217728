@@ -27,7 +27,7 @@ def create_app() -> FastAPI:
     # Log readiness once startup completes
     @app.on_event("startup")
     async def _on_startup():
-        logger.info("BackendAPI FastAPI app started and ready to accept connections on port 3001")
+        logger.info("BackendAPI FastAPI app started; listening on http://0.0.0.0:3001/ (health: GET /)")
 
     # PUBLIC_INTERFACE
     @app.get(

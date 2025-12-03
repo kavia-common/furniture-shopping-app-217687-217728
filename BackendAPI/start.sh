@@ -23,5 +23,9 @@ fi
 # Install dependencies; ignore cache for CI stability
 "$PIP_BIN" install --no-cache-dir -r requirements.txt
 
+echo "[BackendAPI] Installing complete. Starting uvicorn on 0.0.0.0:3001 ..."
+echo "[BackendAPI] Health endpoint will become ready at GET http://0.0.0.0:3001/"
+
 # Launch the API via uvicorn, binding to 0.0.0.0:3001
+# Use exec so the process PID is uvicorn (for proper signal handling)
 exec uvicorn src.api.main:app --host 0.0.0.0 --port 3001
