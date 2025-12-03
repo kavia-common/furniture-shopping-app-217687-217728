@@ -7,7 +7,7 @@ This service is a FastAPI backend for the Furniture Shopping App.
 - Port: 3001
 - Entrypoint module: `src.api.main:app`
 
-### Start with uvicorn
+### Start with uvicorn (recommended)
 ```bash
 uvicorn src.api.main:app --host 0.0.0.0 --port 3001
 ```
@@ -22,6 +22,8 @@ web: uvicorn src.api.main:app --host 0.0.0.0 --port 3001
 ```bash
 bash start.sh
 ```
+
+Note: There is no Node/npm usage in this backend. Do not run npm start here.
 
 ## Dependencies
 

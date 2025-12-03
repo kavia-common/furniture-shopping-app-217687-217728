@@ -1,0 +1,9 @@
+{
+  "name": "BackendAPI",
+  "port": 3001,
+  "command": "bash start.sh",
+  "healthCheck": {
+    "path": "/",
+    "expectedStatus": 200
+  }
+}
