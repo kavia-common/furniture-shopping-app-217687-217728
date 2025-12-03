@@ -1,23 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Simple start script for local/preview environments.
-# This service is Python/FastAPI only — there is NO Node.js or npm usage or fallback here.
-
-# Show diagnostics
+# Ensure we are in the BackendAPI working directory
 echo "[BackendAPI] Working directory: $(pwd)"
 echo "[BackendAPI] start.sh path: $0"
 
 # Make sure the script remains executable even if exec bit is stripped in some environments
 chmod +x "$0" || true
 
-# Explicitly prevent accidental npm usage in misconfigured environments
-if command -v npm &>/dev/null; then
-  echo "[BackendAPI] Note: npm is present on the system, but it is NOT used for this service." >&2
-fi
-
+# Ensure Python tooling is available
 if ! command -v python &>/dev/null; then
-  echo "Python is required to run the BackendAPI." >&2
+  echo "[BackendAPI] ERROR: Python is required to run the BackendAPI." >&2
   exit 1
 fi
 
@@ -50,10 +43,6 @@ except Exception as e:
 print("[BackendAPI] Import verification OK.")
 PY
 
-echo "[BackendAPI] Installing complete. Starting uvicorn on 0.0.0.0:3001 ..."
-echo "[BackendAPI] Effective command: exec uvicorn src.api.main:app --host 0.0.0.0 --port 3001"
-echo "[BackendAPI] Health endpoint will become ready at GET http://0.0.0.0:3001/"
-
-# Launch the API via uvicorn, binding to 0.0.0.0:3001
+echo "[BackendAPI] Starting uvicorn on 0.0.0.0:3001 ..."
 # Use exec so the process PID is uvicorn (for proper signal handling)
 exec uvicorn src.api.main:app --host 0.0.0.0 --port 3001
