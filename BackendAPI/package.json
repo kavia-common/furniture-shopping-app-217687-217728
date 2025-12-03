@@ -1,0 +1,10 @@
+{
+  "name": "backendapi-fastapi-shim",
+  "private": true,
+  "description": "Shim for preview runners that insist on npm; proxies to bash start.sh to launch FastAPI via uvicorn on port 3001.",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "echo \"[BackendAPI] npm shim invoked. Working dir: $(pwd). Effective command: bash start.sh\" && bash start.sh",
+    "start:dev": "echo \"[BackendAPI] npm start:dev shim -> bash start.sh\" && bash start.sh"
+  }
+}

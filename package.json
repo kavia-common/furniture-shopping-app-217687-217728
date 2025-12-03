@@ -1,0 +1,10 @@
+{
+  "name": "furniture-shopping-app-root-shim",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Root-level shim for preview runners that insist on npm. Proxies to BackendAPI/start.sh.",
+  "scripts": {
+    "start": "echo \"[Root npm shim] Proxying to BackendAPI/start.sh (working dir: $(pwd))\" && cd BackendAPI && bash start.sh",
+    "start:dev": "echo \"[Root npm shim] Proxying to BackendAPI/start.sh (working dir: $(pwd))\" && cd BackendAPI && bash start.sh"
+  }
+}

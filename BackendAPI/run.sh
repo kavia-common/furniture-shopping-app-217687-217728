@@ -3,6 +3,8 @@
 # This simply delegates to start.sh and ensures proper signal handling via exec.
 set -euo pipefail
 
+echo "[BackendAPI] run.sh invoked. Working directory: $(pwd)"
+
 # Ensure start.sh is executable and present
 if [ ! -f "start.sh" ]; then
   echo "start.sh not found in $(pwd). Ensure you are running from BackendAPI directory." >&2

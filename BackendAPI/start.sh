@@ -4,6 +4,10 @@ set -euo pipefail
 # Simple start script for local/preview environments.
 # This service is Python/FastAPI only — there is NO Node.js or npm usage or fallback here.
 
+# Show diagnostics
+echo "[BackendAPI] Working directory: $(pwd)"
+echo "[BackendAPI] start.sh path: $0"
+
 # Make sure the script remains executable even if exec bit is stripped in some environments
 chmod +x "$0" || true
 
@@ -25,9 +29,29 @@ if ! command -v "$PIP_BIN" &>/dev/null; then
 fi
 
 # Install dependencies; ignore cache for CI stability
+echo "[BackendAPI] Installing Python requirements from requirements.txt ..."
 "$PIP_BIN" install --no-cache-dir -r requirements.txt
 
+# Verify imports before starting
+echo "[BackendAPI] Verifying FastAPI and app import ..."
+python - <<'PY'
+import importlib, sys
+try:
+    import fastapi  # noqa: F401
+except Exception as e:
+    print(f"[BackendAPI][ERROR] FastAPI import failed: {e}", file=sys.stderr)
+    raise
+try:
+    mod = importlib.import_module("src.api.main")
+    assert hasattr(mod, "app"), "src.api.main must define 'app'"
+except Exception as e:
+    print(f"[BackendAPI][ERROR] Importing src.api.main failed: {e}", file=sys.stderr)
+    raise
+print("[BackendAPI] Import verification OK.")
+PY
+
 echo "[BackendAPI] Installing complete. Starting uvicorn on 0.0.0.0:3001 ..."
+echo "[BackendAPI] Effective command: exec uvicorn src.api.main:app --host 0.0.0.0 --port 3001"
 echo "[BackendAPI] Health endpoint will become ready at GET http://0.0.0.0:3001/"
 
 # Launch the API via uvicorn, binding to 0.0.0.0:3001
