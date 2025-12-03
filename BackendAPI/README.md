@@ -23,7 +23,7 @@ web: uvicorn src.api.main:app --host 0.0.0.0 --port 3001
 bash start.sh
 ```
 
-Note: There is no Node/npm usage in this backend. Do not run npm start here.
+Note: There is no Node/npm usage in this backend. Do not run npm start here. If your environment attempts to run npm, it is misconfigured—ensure it runs `bash start.sh` or `uvicorn ...` directly.
 
 ## Dependencies
 
